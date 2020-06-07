@@ -1,0 +1,38 @@
+﻿@model ShoppingCartViewModel
+<div>
+    <h2>Vasa korpa</h2>
+</div>
+<table class="table table-bordered table-striped" style="background-color:white">
+    <thead>
+        <tr>
+            <th>Kolicina</th>
+            <th>Naziv</th>
+            <th class="text-right">Cena</th>
+            <th class="text-right">Ukupno (RSD)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <tr>
+                <td class="text-center">@line.Amount</td>
+                <td class="text-left">@line.Pizza.Ime</td>
+                <td class="text-right">@line.Pizza.Cena.ToString()</td>
+                <td class="text-right">
+                    @((line.Amount * line.Pizza.Cena).ToString())
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Zbir:</td>
+            <td class="text-right">
+                @Model.ShoppingCartTotal.ToString("#.##") 
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn-primary" style="background-color:#da2129" asp-controller="Order" asp-action="Checkout">Kupi!</a>
+</div>

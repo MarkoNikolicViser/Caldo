@@ -1,0 +1,21 @@
+﻿@model Pizza
+
+<div class="thumbnail">
+    <img alt="@Model.Ime" src="@Model.SlikaUrl" height="420" width="900">
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.Cena</h3>
+        <h3>
+            <a href="#">@Model.Ime</a>
+        </h3>
+        <h4>@Model.MaliOpis</h4>
+        <p>@Model.VelikiOpis</p>
+        <div class="addToCart">
+            <p class="button btn-sm">
+                <a class="btn btn-primary"
+                   asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-pizzaId="@Model.PizzaId">Add to Cart</a>
+            </p>
+        </div>
+    </div>
+</div>

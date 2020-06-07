@@ -1,0 +1,13 @@
+﻿@model HomeViewModel
+<div>
+    @await Html.PartialAsync("Carousel")
+</div>
+
+<h4>Izaberite kategoriju</h4>
+<h5>Nasa nedeljna preporuka iz svake kategorije</h5>
+<div class="row">
+    @foreach (var pizza in Model.PizzasOfTheWeek)
+    {
+    @Html.Partial("PizzasOfTheWeekSumary",pizza)
+    }
+    </div>
